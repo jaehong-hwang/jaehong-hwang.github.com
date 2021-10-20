@@ -1,30 +1,37 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view/>
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default defineComponent({
+  setup() {
+    const DEFAULT_TITLE = '재홍이 블로그';
+
+    useRouter().afterEach(to => {
+      const title = typeof to.meta.title === 'string' ? to.meta.title : '';
+      document.title = DEFAULT_TITLE + (title === '' ? '' : ' | ' + title);
+    });
+  },
+})
+</script>
+
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@font-face {
+  font-family: 'slei-gothic';
+  src: url('~@/assets/fonts/SLEIGothicTTF.ttf');
 }
 
-#nav {
-  padding: 30px;
+html {
+  font-size: 16px;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'slei-gothic';
 }
 </style>
