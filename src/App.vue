@@ -8,12 +8,12 @@ import { useRouter } from 'vue-router'
 
 export default defineComponent({
   setup() {
-    const DEFAULT_TITLE = '재홍이 블로그';
+    const DEFAULT_TITLE = '재홍이 블로그'
 
     useRouter().afterEach(to => {
-      const title = typeof to.meta.title === 'string' ? to.meta.title : '';
-      document.title = DEFAULT_TITLE + (title === '' ? '' : ' | ' + title);
-    });
+      const title = typeof to.meta.title === 'string' ? to.meta.title : ''
+      document.title = DEFAULT_TITLE + (title === '' ? '' : ' | ' + title)
+    })
   },
 })
 </script>
@@ -33,5 +33,9 @@ html {
   margin: 0;
   padding: 0;
   font-family: 'slei-gothic';
+}
+
+li {
+  list-style: none;
 }
 </style>
