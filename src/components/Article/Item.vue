@@ -2,7 +2,7 @@
   <div
     class="article-item"
   >
-    <img :style="{ backgroundImage: `url('${image}')` }" class="article-image">
+    <img :style="{ backgroundImage: `url('${image}')` }" class="article-item--image">
     <div class="article-info">
       <div class="article-info--head">
         <span class="article-info__title">
@@ -55,13 +55,18 @@ export default defineComponent({
       transform: matrix(1.05, 0, 0, 1.05, 0, -20);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
     }
-  }
 
-  &-image {
-    width: 100%;
-    height: 15rem;
-    background-size: cover;
-    background-position: center;
+    &--image {
+      width: 100%;
+      height: 15rem;
+      background-size: 100% auto;
+      background-position: center;
+      transition: all 3s linear;
+    }
+
+    &:hover &--image {
+      background-size: 110% auto;
+    }
   }
 
   &-info {
